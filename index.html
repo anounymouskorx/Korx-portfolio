@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SITES BY KORX</title>
+<meta name="description" content="SITES BY KORX, web developer portfolio.">
+<style>:root{color-scheme:dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link id="korx-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style id="korx-style">
+/* Layout concept: one long black page. A giant expanded wordmark over a faint blueprint grid,
+   a grid of live sites drawn as mini browser windows, one contact block. Admin is a hidden
+   overlay opened by tapping the footer copyright mark five times (owner only). */
+:root {
+  color-scheme: dark;
+  --ink: #04060c;
+  --deep: #080d1a;
+  --edge: #16254a;
+  --text: #e7edfb;
+  --mute: #8b98b8;
+  --blue: #2a62f0;
+  --sky: #79a6ff;
+  --glow: rgba(42, 98, 240, .34);
+  --bad: #ff8da1;
+  --f-display: "Archivo", "Arial Black", system-ui, sans-serif;
+  --f-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--text);
+  font: 400 1rem/1.6 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+}
+:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; }
+.wrap { width: min(100%, 72rem); margin-inline: auto; padding-inline: clamp(16px, 5vw, 40px); }
+
+/* header */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: rgba(4, 6, 12, .8); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--edge);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.5rem; }
+.logo {
+  display: flex; align-items: center; gap: .6rem;
+  font: 800 .88rem/1 var(--f-display); font-stretch: 125%;
+  letter-spacing: .04em; text-transform: uppercase; color: var(--text); text-decoration: none;
+}
+.logo i { width: .7rem; height: .7rem; background: var(--blue); box-shadow: 0 0 14px var(--blue); }
+.nav { display: flex; gap: 1.25rem; font: 500 .8rem var(--f-mono); }
+.nav a { color: var(--mute); text-decoration: none; }
+.nav a:hover { color: var(--sky); }
+
+/* hero */
+.hero { position: relative; isolation: isolate; padding-block: clamp(3rem, 10vw, 7rem) clamp(2.5rem, 6vw, 4.5rem); }
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .55;
+  background:
+    radial-gradient(60rem 28rem at 85% -10%, var(--glow), transparent 70%),
+    linear-gradient(var(--edge) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(90deg, var(--edge) 1px, transparent 1px) 0 0 / 48px 48px;
+  -webkit-mask-image: linear-gradient(#000 45%, transparent);
+  mask-image: linear-gradient(#000 45%, transparent);
+}
+.eyebrow {
+  margin: 0; display: flex; align-items: center; gap: .6rem;
+  font: 500 .75rem/1 var(--f-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--sky);
+}
+.eyebrow::before { content: ""; width: .5rem; height: .5rem; background: var(--blue); }
+.mark {
+  margin: 1rem 0 0;
+  font: 800 clamp(2.6rem, 12.5vw, 8rem)/.9 var(--f-display); font-stretch: 125%;
+  letter-spacing: -.02em; text-transform: uppercase;
+}
+.mark span { display: block; }
+.mark .by { color: var(--sky); text-shadow: 0 0 48px var(--glow); }
+.lead { max-width: 34rem; margin: 1.5rem 0 0; color: var(--mute); font-size: 1.125rem; }
+.cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 3rem; padding: 0 1.4rem;
+  border: 1px solid var(--blue); border-radius: 8px; background: var(--blue); color: #fff;
+  font: 600 .95rem var(--f-body); text-decoration: none; cursor: pointer;
+  transition: background .2s, box-shadow .2s;
+}
+.btn:hover { background: #4373f5; box-shadow: 0 0 28px -4px var(--glow); }
+.btn.ghost { background: transparent; color: var(--sky); }
+.btn.ghost:hover { background: rgba(42, 98, 240, .14); }
+.btn:disabled { opacity: .6; cursor: default; }
+.num {
+  display: inline-flex; align-items: center; gap: .9rem; min-height: 3rem; padding: 0 .5rem 0 1rem;
+  border: 1px solid var(--edge); border-radius: 8px; background: var(--deep); color: var(--text);
+  font: 500 1rem var(--f-mono); cursor: pointer;
+}
+.num:hover { border-color: var(--blue); }
+.num-a {
+  font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sky);
+  border: 1px solid var(--edge); border-radius: 5px; padding: .45rem .6rem;
+}
+
+/* sections */
+.sec { padding-block: clamp(3rem, 8vw, 5.5rem); scroll-margin-top: 3.5rem; }
+.sec.line { border-top: 1px solid var(--edge); }
+.sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.75rem; }
+h2 {
+  margin: .6rem 0 0; font: 800 clamp(1.6rem, 5vw, 2.6rem)/1.05 var(--f-display); font-stretch: 118%;
+  text-transform: uppercase; text-wrap: balance;
+}
+.count { margin: 0; font: 400 .8rem var(--f-mono); color: var(--mute); }
+
+/* project cards */
+.grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); }
+.card {
+  display: flex; flex-direction: column; min-width: 0; overflow: hidden;
+  background: var(--deep); border: 1px solid var(--edge); border-radius: 10px;
+  color: inherit; text-decoration: none;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+.card:hover, .card:focus-visible { transform: translateY(-3px); border-color: var(--blue); box-shadow: 0 16px 40px -14px var(--glow); }
+.chrome { display: flex; align-items: center; gap: .75rem; padding: .6rem .8rem; border-bottom: 1px solid var(--edge); background: #060a14; }
+.dots { display: flex; gap: 5px; }
+.dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--edge); }
+.url {
+  flex: 1; min-width: 0; padding: .4rem .7rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font: 400 .72rem/1 var(--f-mono); color: var(--mute);
+  background: var(--ink); border: 1px solid var(--edge); border-radius: 99px;
+}
+.shot { aspect-ratio: 16 / 10; max-width: 100%; }
+.shot svg { display: block; width: 100%; height: 100%; }
+.meta { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .9rem 1rem; }
+.meta b { min-width: 0; overflow-wrap: anywhere; font: 700 1rem/1.2 var(--f-display); font-stretch: 112%; }
+.meta span { white-space: nowrap; font: 500 .75rem var(--f-mono); color: var(--sky); }
+.empty { display: grid; gap: .6rem; max-width: 34rem; padding: 2rem 1.5rem; border: 1px dashed var(--edge); border-radius: 10px; }
+.empty h3 { margin: 0; font: 700 1.1rem/1.2 var(--f-display); font-stretch: 112%; }
+.empty p { margin: 0; color: var(--mute); }
+
+/* contact */
+.bignum {
+  margin: 1.5rem 0 0; font: 500 clamp(1.9rem, 9vw, 3.8rem)/1 var(--f-mono);
+  letter-spacing: -.01em; color: var(--text); user-select: all; -webkit-user-select: all;
+  text-shadow: 0 0 40px var(--glow);
+}
+
+footer { border-top: 1px solid var(--edge); }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; padding-block: 1.5rem 2rem; font: 400 .75rem var(--f-mono); color: var(--mute); }
+.foot p { margin: 0; }
+.secret { display: inline-block; padding: .8rem .5rem; margin: -.8rem -.25rem; cursor: default; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+.toast {
+  position: fixed; left: 50%; bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)); z-index: 120;
+  max-width: calc(100% - 32px); padding: .7rem 1rem; border: 1px solid var(--blue); border-radius: 8px;
+  background: var(--deep); color: var(--text); font: 500 .85rem var(--f-body);
+  opacity: 0; transform: translate(-50%, 12px); pointer-events: none; transition: opacity .2s, transform .2s;
+}
+.toast.on { opacity: 1; transform: translate(-50%, 0); }
+
+/* hidden admin overlay */
+.gate {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 16px;
+  background: rgba(2, 4, 10, .92); backdrop-filter: blur(10px);
+}
+.gc {
+  position: relative; width: min(100%, 24rem); padding: 2.25rem 1.5rem 1.75rem;
+  background: var(--deep); border: 1px solid var(--edge); border-radius: 12px; box-shadow: 0 30px 80px -20px var(--glow);
+}
+.gv { display: grid; gap: .9rem; justify-items: center; text-align: center; }
+.gv.form { justify-items: stretch; text-align: left; }
+.gv h3 { margin: 0; font: 700 1.15rem/1.2 var(--f-display); font-stretch: 112%; }
+.x {
+  position: absolute; top: .5rem; right: .5rem; width: 2.5rem; height: 2.5rem;
+  border: 0; background: transparent; color: var(--mute); font-size: 1.6rem; line-height: 1; cursor: pointer;
+}
+.x:hover { color: var(--text); }
+.fp {
+  position: relative; display: grid; place-items: center; width: 6.5rem; height: 6.5rem; margin-block: .5rem;
+  border: 1px solid var(--blue); border-radius: 50%; color: var(--sky); cursor: pointer;
+  background: radial-gradient(circle, rgba(42, 98, 240, .28), transparent 70%);
+}
+.fp svg { width: 3.2rem; height: 3.2rem; }
+.fp.scan::after { content: ""; position: absolute; inset: -6px; border: 1px solid var(--sky); border-radius: 50%; animation: ring 1.2s ease-out infinite; }
+@keyframes ring { from { transform: scale(.9); opacity: .9; } to { transform: scale(1.35); opacity: 0; } }
+.gs { margin: 0; min-height: 1.3em; font-size: .85rem; color: var(--mute); }
+.gs.ok { color: var(--sky); font: 400 .74rem/1.4 var(--f-mono); }
+.gs.err { color: var(--bad); }
+.lbl { font: 500 .7rem var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
+input {
+  width: 100%; min-height: 3rem; padding: 0 .9rem;
+  background: var(--ink); border: 1px solid var(--edge); border-radius: 8px; color: var(--text); font: 400 .95rem var(--f-mono);
+}
+input:focus { outline: 2px solid var(--sky); outline-offset: 0; border-color: var(--sky); }
+input::placeholder { color: #566384; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+<div id="app"></div>
+<script id="korx-data" type="application/json">[]</script>
+<script id="korx-app">
+(function () {
+  "use strict";
+  var NUMBER = "08148330275";
+  function $(id) { return document.getElementById(id); }
+
+  /* PURE:START */
+  function normalizeUrl(raw) {
+    if (!raw) return null;
+    var s = String(raw).trim();
+    if (!/^https?:\/\//i.test(s)) {
+      if (/^[a-z][a-z0-9+.-]*:\/\//i.test(s)) return null;
+      s = "https://" + s;
+    }
+    var u;
+    try { u = new URL(s); } catch (e) { return null; }
+    if (u.protocol !== "https:" && u.protocol !== "http:") return null;
+    if (u.username || u.password) return null;
+    if (u.hostname.indexOf(".") < 0) return null;
+    return u;
+  }
+  var HOSTED = ["vercel.app", "netlify.app", "github.io", "pages.dev", "web.app", "firebaseapp.com", "onrender.com",
+    "herokuapp.com", "framer.website", "framer.app", "webflow.io", "wixsite.com", "blogspot.com", "wordpress.com",
+    "replit.app", "repl.co", "glitch.me", "surge.sh", "fly.dev", "railway.app", "claude.ai"];
+  function nameFromHost(host) {
+    host = host.replace(/^www\./, "");
+    var hosted = null;
+    for (var i = 0; i < HOSTED.length; i++) {
+      if (host.length > HOSTED[i].length + 1 && host.slice(-(HOSTED[i].length + 1)) === "." + HOSTED[i]) { hosted = HOSTED[i]; break; }
+    }
+    var label;
+    if (hosted) {
+      label = host.slice(0, -(hosted.length + 1)).split(".").pop();
+    } else {
+      var parts = host.split(".");
+      var idx = parts.length - 2;
+      var second = ["com", "co", "org", "net", "edu", "gov", "ac"];
+      if (parts.length >= 3 && parts[parts.length - 1].length === 2 && second.indexOf(parts[parts.length - 2]) >= 0) idx = parts.length - 3;
+      label = parts[Math.max(idx, 0)] || host;
+    }
+    return label.replace(/[-_]+/g, " ").replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+  }
+  function safeJson(o) {
+    return JSON.stringify(o).replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026")
+      .replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029");
+  }
+  /* PURE:END */
+
+  function hostOf(url) { return new URL(url).hostname.replace(/^www\./, ""); }
+
+  /* ---------- data ---------- */
+  var projects = [];
+  var loaded = false;
+  function clean(list) {
+    var out = [];
+    if (Array.isArray(list)) {
+      list.forEach(function (p) {
+        var u = p && typeof p.url === "string" ? normalizeUrl(p.url) : null;
+        if (u) out.push({ url: u.href, added: typeof p.added === "string" ? p.added : "" });
+      });
+    }
+    return out;
+  }
+  try { projects = clean(JSON.parse($("korx-data").textContent || "[]")); } catch (e) {}
+
+  /* ---------- generated site previews ---------- */
+  function hash(s) {
+    var h = 2166136261;
+    for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return h >>> 0;
+  }
+  function rng(seed) {
+    var a = seed >>> 0;
+    return function () {
+      a = (a + 0x6D2B79F5) >>> 0;
+      var t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function previewSVG(host, i) {
+    var r = rng(hash(host));
+    var hue = 214 + Math.floor(r() * 24);
+    var variant = Math.floor(r() * 3);
+    var gx = 20 + Math.floor(r() * 60), gy = 5 + Math.floor(r() * 35);
+    var w1 = 120 + Math.floor(r() * 50);
+    function fill(l) { return "hsl(" + hue + ",92%," + l + "%)"; }
+    function bar(x, y, w, h, l, a, rx) {
+      return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="' + (rx || 3) + '" fill="' + fill(l) + '" fill-opacity="' + a + '"/>';
+    }
+    var s = '<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      '<defs><radialGradient id="g' + i + '" cx="' + gx + '%" cy="' + gy + '%" r="80%">' +
+      '<stop offset="0" stop-color="' + fill(52) + '" stop-opacity=".55"/><stop offset="1" stop-color="' + fill(20) + '" stop-opacity="0"/></radialGradient></defs>' +
+      '<rect width="320" height="200" fill="#060a15"/><rect width="320" height="200" fill="url(#g' + i + ')"/>' +
+      bar(16, 14, 30, 7, 70, 0.9) + bar(212, 15, 22, 5, 80, 0.45) + bar(242, 15, 22, 5, 80, 0.45) + bar(272, 12, 32, 10, 58, 1, 4);
+    if (variant === 0) {
+      s += bar(16, 52, w1, 14, 92, 0.95) + bar(16, 72, w1 - 36, 14, 92, 0.95) + bar(16, 100, 128, 5, 80, 0.4) + bar(16, 110, 108, 5, 80, 0.4) + bar(16, 128, 50, 14, 58, 1, 5) +
+        '<circle cx="246" cy="98" r="46" fill="' + fill(60) + '" fill-opacity=".28"/><circle cx="246" cy="98" r="26" fill="' + fill(62) + '" fill-opacity=".5"/>' +
+        bar(16, 158, 92, 30, 70, 0.16, 5) + bar(114, 158, 92, 30, 70, 0.16, 5) + bar(212, 158, 92, 30, 70, 0.16, 5);
+    } else if (variant === 1) {
+      s += bar(160 - w1 / 2, 48, w1, 14, 92, 0.95) + bar(160 - (w1 - 50) / 2, 70, w1 - 50, 14, 92, 0.95) +
+        bar(98, 98, 124, 5, 80, 0.4) + bar(116, 108, 88, 5, 80, 0.4) + bar(136, 124, 48, 14, 58, 1, 5);
+      for (var k = 0; k < 4; k++) s += bar(16 + k * 75, 152, 68, 36, 70, 0.16, 5);
+    } else {
+      s += bar(16, 40, 56, 148, 70, 0.12, 5);
+      for (var j = 0; j < 5; j++) s += bar(24, 52 + j * 16, 40, 6, 80, 0.5);
+      s += bar(88, 46, w1 + 30, 12, 92, 0.95) + bar(88, 66, w1 - 10, 12, 92, 0.95) + bar(88, 90, 216, 52, 60, 0.2, 6) +
+        bar(88, 152, 180, 5, 80, 0.4) + bar(88, 162, 140, 5, 80, 0.4) + bar(88, 172, 100, 5, 80, 0.4);
+    }
+    return s + "</svg>";
+  }
+
+  /* ---------- page ---------- */
+  function shell() {
+    return '' +
+      '<header class="top"><div class="wrap">' +
+      '<a class="logo" href="#top" data-go="top"><i></i>Sites by Korx</a>' +
+      '<nav class="nav" aria-label="Sections"><a href="#work" data-go="work">/work</a><a href="#contact" data-go="contact">/contact</a></nav>' +
+      '</div></header>' +
+      '<main id="top">' +
+      '<section class="hero"><div class="wrap">' +
+      '<p class="eyebrow">Web developer</p>' +
+      '<h1 class="mark"><span>Sites</span><span class="by">by Korx</span></h1>' +
+      '<p class="lead">I design and build websites for businesses and brands. Every project below is live. Open one and see it working.</p>' +
+      '<div class="cta"><a class="btn" href="#work" data-go="work">View projects</a>' +
+      '<a class="btn ghost" href="#contact" data-go="contact">Contact me</a></div>' +
+      '</div></section>' +
+      '<section id="work" class="sec"><div class="wrap">' +
+      '<div class="sec-head"><div><p class="eyebrow">/work</p><h2>Live projects</h2></div><p class="count" id="count"></p></div>' +
+      '<div id="grid" class="grid"></div>' +
+      '</div></section>' +
+      '<section id="contact" class="sec line"><div class="wrap">' +
+      '<p class="eyebrow">/contact</p><h2>Start your website</h2>' +
+      '<p class="lead">Call or text this number and tell me what you need built.</p>' +
+      '<p class="bignum" id="bignum">' + NUMBER + '</p>' +
+      '<div class="cta"><button class="btn" id="copy2" type="button">Copy number</button><a class="btn ghost" href="tel:' + NUMBER + '">Call now</a></div>' +
+      '</div></section>' +
+      '</main>' +
+      '<footer><div class="wrap foot"><p><span id="secret" class="secret">\u00a9</span> <span id="yr"></span> Sites by Korx</p><p>Web developer</p></div></footer>' +
+      '<div id="toast" class="toast" role="status" aria-live="polite"></div>';
+  }
+
+  function card(p, i) {
+    var host = hostOf(p.url), u = new URL(p.url), name = nameFromHost(host);
+    var a = document.createElement("a");
+    a.className = "card";
+    a.href = p.url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.setAttribute("aria-label", name + ", open live site");
+    a.innerHTML = '<div class="chrome"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="url"></span></div>' +
+      '<div class="shot"></div><div class="meta"><b></b><span>Visit site \u2197</span></div>';
+    a.querySelector(".url").textContent = u.protocol + "//" + host;
+    a.querySelector(".shot").innerHTML = previewSVG(host, i);
+    a.querySelector("b").textContent = name;
+    return a;
+  }
+
+  function renderProjects() {
+    var grid = $("grid"), count = $("count");
+    grid.textContent = "";
+    if (!loaded) {
+      count.textContent = "";
+      var l = document.createElement("div");
+      l.className = "empty";
+      l.innerHTML = "<p>Loading projects\u2026</p>";
+      grid.appendChild(l);
+      return;
+    }
+    if (!projects.length) {
+      count.textContent = "no sites yet";
+      var e = document.createElement("div");
+      e.className = "empty";
+      e.innerHTML = "<h3>New projects are on the way</h3><p>Finished sites appear here as they go live. To start your own, use the contact details below.</p>";
+      grid.appendChild(e);
+      return;
+    }
+    count.textContent = projects.length + (projects.length === 1 ? " live site" : " live sites");
+    projects.forEach(function (p, i) { grid.appendChild(card(p, i)); });
+  }
+
+  var toastTimer = 0;
+  function toast(msg) {
+    var t = $("toast");
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add("on");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove("on"); }, 2600);
+  }
+  function selectNumber() {
+    try {
+      var r = document.createRange();
+      r.selectNodeContents($("bignum"));
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+    } catch (e) {}
+  }
+  function copyNumber() {
+    var done = function () { toast("Number copied"); };
+    var fail = function () { selectNumber(); toast("Number selected. Copy it from the page."); };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(NUMBER).then(done, fail);
+      else fail();
+    } catch (e) { fail(); }
+  }
+
+  /* ---------- hidden admin (talks to the server at /api/projects) ---------- */
+  var API = "/api/projects";
+  var passcode = "";
+
+  async function api(body) {
+    var res;
+    try {
+      res = await fetch(API, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+    } catch (e) { return { status: 0, data: {} }; }
+    var data = {};
+    try { data = await res.json(); } catch (e) {}
+    return { status: res.status, data: data };
+  }
+
+  function errorText(r) {
+    var d = r.data || {}, s = r.status;
+    if (s === 0) return "Couldn't reach the server. Check your connection.";
+    if (s === 401) return "Wrong passcode.";
+    if (s === 429) return "Too many wrong tries. Try again in " + Math.max(1, Math.ceil((d.retryAfter || 60) / 60)) + " minutes.";
+    if (d.error === "not_configured") return "The passcode isn't set on the server yet. Add ADMIN_PASSCODE in Netlify and redeploy.";
+    if (d.error === "bad_url") return "Paste a full website link, like https://example.com";
+    if (d.error === "duplicate") return "That project is already on the page.";
+    if (d.error === "full") return "The project list is full.";
+    return "Something went wrong. Try again.";
+  }
+
+  var gateEl = null;
+  function onGateKey(e) { if (e.key === "Escape") closeGate(); }
+  function closeGate() {
+    if (!gateEl) return;
+    gateEl.remove();
+    gateEl = null;
+    passcode = "";
+    document.removeEventListener("keydown", onGateKey);
+  }
+
+  function openGate() {
+    if (gateEl) return;
+    var g = document.createElement("div");
+    g.className = "gate";
+    g.setAttribute("role", "dialog");
+    g.setAttribute("aria-modal", "true");
+    g.setAttribute("aria-label", "Admin");
+    g.innerHTML = '<div class="gc"><button class="x" id="gx" type="button" aria-label="Close">×</button>' +
+      '<div class="gv form" id="lockv"><p class="eyebrow">Admin</p><label class="lbl" for="pcode">Passcode</label>' +
+      '<input id="pcode" type="password" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter passcode">' +
+      '<p class="gs err" id="gs" role="alert"></p><button class="btn" id="pgo" type="button">Unlock</button></div>' +
+      '<div class="gv form" id="panelv" hidden><p class="eyebrow">Admin</p><p class="gs ok" id="who">Unlocked</p>' +
+      '<label class="lbl" for="plink">Project link</label>' +
+      '<input id="plink" type="text" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Paste the site link here">' +
+      '<p class="gs err" id="perr" role="alert"></p>' +
+      '<button class="btn" id="padd" type="button">Add project</button></div></div>';
+    document.body.appendChild(g);
+    gateEl = g;
+    document.addEventListener("keydown", onGateKey);
+    $("gx").addEventListener("click", closeGate);
+
+    var pc = $("pcode"), gs = $("gs"), go = $("pgo");
+    async function tryUnlock() {
+      if (go.disabled) return;
+      if (!pc.value.trim()) { gs.textContent = "Enter your passcode."; return; }
+      go.disabled = true;
+      gs.textContent = "";
+      var r = await api({ action: "verify", passcode: pc.value });
+      go.disabled = false;
+      if (r.status === 200 && r.data && r.data.ok) {
+        passcode = pc.value;
+        $("lockv").hidden = true;
+        $("panelv").hidden = false;
+        $("plink").focus();
+      } else {
+        pc.value = "";
+        gs.textContent = errorText(r);
+        pc.focus();
+      }
+    }
+    go.addEventListener("click", tryUnlock);
+    pc.addEventListener("keydown", function (e) { if (e.key === "Enter") tryUnlock(); });
+
+    var padd = $("padd"), plink = $("plink"), perr = $("perr");
+    async function addProject() {
+      if (padd.disabled) return;
+      var u = normalizeUrl(plink.value);
+      if (!u) { perr.textContent = "Paste a full website link, like https://example.com"; return; }
+      if (projects.some(function (p) { return p.url === u.href; })) { perr.textContent = "That project is already on the page."; return; }
+      perr.textContent = "";
+      padd.disabled = true;
+      padd.textContent = "Adding…";
+      var r = await api({ action: "add", passcode: passcode, url: u.href });
+      if (r.status === 200 && r.data && r.data.ok) {
+        projects = clean(r.data.projects);
+        renderProjects();
+        closeGate();
+        toast(nameFromHost(hostOf(u.href)) + " added");
+      } else {
+        padd.disabled = false;
+        padd.textContent = "Add project";
+        perr.textContent = errorText(r);
+      }
+    }
+    padd.addEventListener("click", addProject);
+    plink.addEventListener("keydown", function (e) { if (e.key === "Enter") addProject(); });
+    pc.focus();
+  }
+
+  function load() {
+    fetch(API, { cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { projects = clean(d && d.projects); })
+      .catch(function () {})
+      .then(function () { loaded = true; renderProjects(); });
+  }
+
+  /* ---------- boot ---------- */
+  $("app").innerHTML = shell();
+  $("yr").textContent = String(new Date().getFullYear());
+  renderProjects();
+  load();
+  $("copy2").addEventListener("click", copyNumber);
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("[data-go]") : null;
+    if (!a) return;
+    e.preventDefault();
+    var id = a.getAttribute("data-go");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var behavior = reduce ? "auto" : "smooth";
+    if (id === "top") window.scrollTo({ top: 0, behavior: behavior });
+    else { var el = $(id); if (el) el.scrollIntoView({ behavior: behavior, block: "start" }); }
+  });
+  var taps = 0, lastTap = 0;
+  $("secret").addEventListener("click", function () {
+    var now = Date.now();
+    taps = now - lastTap < 900 ? taps + 1 : 1;
+    lastTap = now;
+    if (taps >= 5) { taps = 0; openGate(); }
+  });
+})();
+</script>
+</body>
+</html>
