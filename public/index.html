@@ -3,13 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>SITES BY KORX</title>
-<meta name="description" content="SITES BY KORX, web developer portfolio.">
-<style>:root{color-scheme:dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-</head>
-<body>
-<link id="korx-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-<style id="korx-style">
+<title>SITES BY KORX | Web Developer</title>
+<meta name="description" content="SITES BY KORX is a web developer building fast, clean websites for businesses and brands. See live projects and get in touch.">
+<meta name="theme-color" content="#04060c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SITES BY KORX | Web Developer">
+<meta property="og:description" content="Fast, clean websites for businesses and brands. See live projects and get in touch.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"SITES BY KORX","description":"Web developer building websites for businesses and brands.","telephone":"+2348148330275"}</script>
+<style>:root{color-scheme:dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+.shotimg { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; background: var(--ink); }
+.gc { max-height: 92vh; overflow-y: auto; }
+input[type="file"] { padding: .6rem .7rem; font-size: .85rem; }
+.pprev img { display: block; width: 100%; border-radius: 8px; border: 1px solid var(--edge); }
+.eh { margin: 1.2rem 0 0; padding-top: 1rem; border-top: 1px solid var(--edge); font: 700 1rem/1.2 var(--f-display); font-stretch: 112%; }
+.elist { display: grid; gap: .7rem; }
+.eq { padding: .85rem; background: var(--ink); border: 1px solid var(--edge); border-radius: 8px; overflow-wrap: anywhere; }
+.eq-top { display: flex; justify-content: space-between; gap: .6rem; }
+.eq-need { color: var(--sky); font: 500 .68rem var(--f-mono); }
+.eq-c { display: block; margin: .3rem 0; color: var(--sky); font: 500 .85rem var(--f-mono); }
+.eq-m { margin: .3rem 0; white-space: pre-wrap; font-size: .9rem; }
+.eq time { color: var(--mute); font: 400 .68rem var(--f-mono); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112..125,700..800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
 /* Layout concept: one long black page. A giant expanded wordmark over a faint blueprint grid,
    a grid of live sites drawn as mini browser windows, one contact block. Admin is a hidden
    overlay opened by tapping the footer copyright mark five times (owner only). */
@@ -189,18 +208,142 @@ footer { border-top: 1px solid var(--edge); }
 .gs.ok { color: var(--sky); font: 400 .74rem/1.4 var(--f-mono); }
 .gs.err { color: var(--bad); }
 .lbl { font: 500 .7rem var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
-input {
+input, select, textarea {
   width: 100%; min-height: 3rem; padding: 0 .9rem;
   background: var(--ink); border: 1px solid var(--edge); border-radius: 8px; color: var(--text); font: 400 .95rem var(--f-mono);
 }
-input:focus { outline: 2px solid var(--sky); outline-offset: 0; border-color: var(--sky); }
-input::placeholder { color: #566384; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--sky); outline-offset: 0; border-color: var(--sky); }
+input::placeholder, textarea::placeholder { color: #7482a3; }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+/* skip link and nav targets */
+.skip { position: absolute; left: 12px; top: -4rem; z-index: 200; padding: .7rem 1rem; border-radius: 8px; background: var(--blue); color: #fff; text-decoration: none; font: 600 .9rem var(--f-body); }
+.skip:focus { top: calc(.75rem + env(safe-area-inset-top, 0px)); }
+.nav a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.n-services { display: none !important; }
+@media (min-width: 30rem) { .n-services { display: inline-flex !important; } }
+
+/* services */
+.svc { list-style: none; margin: 1.75rem 0 0; padding: 0; display: grid; gap: 1px; grid-template-columns: minmax(0, 1fr); background: var(--edge); border: 1px solid var(--edge); border-radius: 10px; overflow: hidden; }
+@media (min-width: 40rem) { .svc { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 64rem) { .svc { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.svc li { min-width: 0; padding: 1.5rem 1.25rem; background: var(--deep); }
+.svc h3 { margin: 0 0 .55rem; font: 700 1.05rem/1.2 var(--f-display); font-stretch: 112%; }
+.svc p { margin: 0; color: var(--mute); }
+
+/* about */
+.about { display: grid; gap: 1.5rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 48rem) { .about { grid-template-columns: 1fr 1.4fr; gap: 3rem; } }
+.about p { margin: 0 0 1rem; max-width: 34rem; color: var(--mute); }
+.about p strong { color: var(--text); font-weight: 600; }
+
+/* contact + enquiry form */
+.contact-grid { display: grid; gap: 2.5rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 56rem) { .contact-grid { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; } }
+.enq { display: grid; gap: .6rem; min-width: 0; padding: 1.5rem; background: var(--deep); border: 1px solid var(--edge); border-radius: 12px; }
+.enq h3 { margin: 0 0 .4rem; font: 700 1.1rem/1.2 var(--f-display); font-stretch: 112%; }
+.enq .lbl { margin-top: .4rem; }
+.enq .btn { margin-top: .8rem; }
+textarea, select { font-family: var(--f-body); }
+textarea { min-height: 7rem; padding: .7rem .9rem; resize: vertical; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; margin: 0; overflow: hidden; }
 </style>
-<div id="app"></div>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="logo" href="#top" data-go="top"><i></i>Sites by Korx</a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#work" data-go="work">/work</a>
+    <a class="n-services" href="#services" data-go="services">/services</a>
+    <a href="#contact" data-go="contact">/contact</a>
+  </nav>
+</div></header>
+
+<main id="main">
+  <section class="hero"><div class="wrap">
+    <p class="eyebrow">Web developer</p>
+    <h1 class="mark"><span>Sites</span><span class="by">by Korx</span></h1>
+    <p class="lead">I design and build websites for businesses and brands. Every project below is live. Open one and see it working.</p>
+    <div class="cta">
+      <a class="btn" href="#work" data-go="work">View projects</a>
+      <a class="btn ghost" href="#contact" data-go="contact">Contact me</a>
+    </div>
+  </div></section>
+
+  <section id="work" class="sec" aria-labelledby="work-h"><div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow">/work</p><h2 id="work-h">Live projects</h2></div>
+      <p class="count" id="count"></p>
+    </div>
+    <div id="grid" class="grid"></div>
+  </div></section>
+
+  <section id="services" class="sec line" aria-labelledby="services-h"><div class="wrap">
+    <p class="eyebrow">/services</p>
+    <h2 id="services-h">What I build</h2>
+    <ul class="svc">
+      <li><h3>Business websites</h3><p>A clear, fast site that shows what you do and makes it easy for customers to reach you.</p></li>
+      <li><h3>Landing pages</h3><p>One focused page for an offer, a launch or an event, built to turn visitors into enquiries.</p></li>
+      <li><h3>Online stores</h3><p>Product pages and a simple way for customers to see what you sell and place an order.</p></li>
+      <li><h3>Redesigns and updates</h3><p>A fresh look and faster loading for a site you already have, plus changes when you need them.</p></li>
+    </ul>
+  </div></section>
+
+  <section id="about" class="sec line" aria-labelledby="about-h"><div class="wrap about">
+    <div><p class="eyebrow">/about</p><h2 id="about-h">Meet Korx</h2></div>
+    <div>
+      <p><strong>I'm Korx, a web developer.</strong> I build websites for businesses and brands, from the first idea to a live site.</p>
+      <p>You tell me what you need. I design it, build it and put it online. The projects above are real sites you can open and use.</p>
+      <p>Have an idea? Send an enquiry below or message me on WhatsApp.</p>
+    </div>
+  </div></section>
+
+  <section id="contact" class="sec line" aria-labelledby="contact-h"><div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow">/contact</p>
+      <h2 id="contact-h">Start your website</h2>
+      <p class="lead">Message me on WhatsApp, call, or send an enquiry. Tell me what you need built.</p>
+      <p class="bignum" id="bignum">08148330275</p>
+      <div class="cta">
+        <a class="btn" href="https://wa.me/2348148330275?text=Hi%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20website." target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+        <a class="btn ghost" href="tel:08148330275">Call now</a>
+        <button class="btn ghost" id="copy2" type="button">Copy number</button>
+      </div>
+    </div>
+
+    <form id="enq" class="enq" aria-labelledby="enq-h" novalidate>
+      <h3 id="enq-h">Send an enquiry</h3>
+      <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <label class="lbl" for="e-name">Your name</label>
+      <input id="e-name" name="name" type="text" autocomplete="name" maxlength="80" required>
+      <label class="lbl" for="e-contact">Phone or email</label>
+      <input id="e-contact" name="contact" type="text" autocomplete="off" maxlength="120" required>
+      <label class="lbl" for="e-need">What do you need?</label>
+      <select id="e-need" name="need">
+        <option>Business website</option>
+        <option>Landing page</option>
+        <option>Online store</option>
+        <option>Redesign or update</option>
+        <option>Something else</option>
+      </select>
+      <label class="lbl" for="e-msg">Tell me about the project</label>
+      <textarea id="e-msg" name="message" rows="4" maxlength="2000" required></textarea>
+      <p class="gs" id="e-status" role="status" aria-live="polite"></p>
+      <button class="btn" id="e-send" type="submit">Send enquiry</button>
+    </form>
+  </div></section>
+</main>
+
+<footer><div class="wrap foot">
+  <p><span id="secret" class="secret">&copy;</span> <span id="yr"></span> Sites by Korx</p>
+  <p>Web developer</p>
+</div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
 <script id="korx-data" type="application/json">[]</script>
 <script id="korx-app">
 (function () {
@@ -260,7 +403,7 @@ input::placeholder { color: #566384; }
     if (Array.isArray(list)) {
       list.forEach(function (p) {
         var u = p && typeof p.url === "string" ? normalizeUrl(p.url) : null;
-        if (u) out.push({ url: u.href, added: typeof p.added === "string" ? p.added : "" });
+        if (u) out.push({ url: u.href, added: typeof p.added === "string" ? p.added : "", image: typeof p.image === "string" && /^[a-f0-9-]{36}$/.test(p.image) ? p.image : "" });
       });
     }
     return out;
@@ -316,35 +459,6 @@ input::placeholder { color: #566384; }
   }
 
   /* ---------- page ---------- */
-  function shell() {
-    return '' +
-      '<header class="top"><div class="wrap">' +
-      '<a class="logo" href="#top" data-go="top"><i></i>Sites by Korx</a>' +
-      '<nav class="nav" aria-label="Sections"><a href="#work" data-go="work">/work</a><a href="#contact" data-go="contact">/contact</a></nav>' +
-      '</div></header>' +
-      '<main id="top">' +
-      '<section class="hero"><div class="wrap">' +
-      '<p class="eyebrow">Web developer</p>' +
-      '<h1 class="mark"><span>Sites</span><span class="by">by Korx</span></h1>' +
-      '<p class="lead">I design and build websites for businesses and brands. Every project below is live. Open one and see it working.</p>' +
-      '<div class="cta"><a class="btn" href="#work" data-go="work">View projects</a>' +
-      '<a class="btn ghost" href="#contact" data-go="contact">Contact me</a></div>' +
-      '</div></section>' +
-      '<section id="work" class="sec"><div class="wrap">' +
-      '<div class="sec-head"><div><p class="eyebrow">/work</p><h2>Live projects</h2></div><p class="count" id="count"></p></div>' +
-      '<div id="grid" class="grid"></div>' +
-      '</div></section>' +
-      '<section id="contact" class="sec line"><div class="wrap">' +
-      '<p class="eyebrow">/contact</p><h2>Start your website</h2>' +
-      '<p class="lead">Call or text this number and tell me what you need built.</p>' +
-      '<p class="bignum" id="bignum">' + NUMBER + '</p>' +
-      '<div class="cta"><button class="btn" id="copy2" type="button">Copy number</button><a class="btn ghost" href="tel:' + NUMBER + '">Call now</a></div>' +
-      '</div></section>' +
-      '</main>' +
-      '<footer><div class="wrap foot"><p><span id="secret" class="secret">\u00a9</span> <span id="yr"></span> Sites by Korx</p><p>Web developer</p></div></footer>' +
-      '<div id="toast" class="toast" role="status" aria-live="polite"></div>';
-  }
-
   function card(p, i) {
     var host = hostOf(p.url), u = new URL(p.url), name = nameFromHost(host);
     var a = document.createElement("a");
@@ -356,7 +470,18 @@ input::placeholder { color: #566384; }
     a.innerHTML = '<div class="chrome"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="url"></span></div>' +
       '<div class="shot"></div><div class="meta"><b></b><span>Visit site \u2197</span></div>';
     a.querySelector(".url").textContent = u.protocol + "//" + host;
-    a.querySelector(".shot").innerHTML = previewSVG(host, i);
+    if (p.image) {
+      var im = document.createElement("img");
+      im.src = API + "?img=" + p.image;
+      im.alt = name + " screenshot";
+      im.loading = "lazy";
+      im.decoding = "async";
+      im.className = "shotimg";
+      im.onerror = function () { a.querySelector(".shot").innerHTML = previewSVG(host, i); };
+      a.querySelector(".shot").appendChild(im);
+    } else {
+      a.querySelector(".shot").innerHTML = previewSVG(host, i);
+    }
     a.querySelector("b").textContent = name;
     return a;
   }
@@ -433,6 +558,8 @@ input::placeholder { color: #566384; }
     if (d.error === "not_configured") return "The passcode isn't set on the server yet. Add ADMIN_PASSCODE in Netlify and redeploy.";
     if (d.error === "bad_url") return "Paste a full website link, like https://example.com";
     if (d.error === "duplicate") return "That project is already on the page.";
+    if (d.error === "bad_image") return "That picture couldn't be used. Try a smaller one.";
+    if (s === 413) return "That picture is too large. Try a smaller one.";
     if (d.error === "full") return "The project list is full.";
     return "Something went wrong. Try again.";
   }
@@ -445,6 +572,94 @@ input::placeholder { color: #566384; }
     gateEl = null;
     passcode = "";
     document.removeEventListener("keydown", onGateKey);
+  }
+
+  function fileToJpeg(file) {
+    return new Promise(function (resolve, reject) {
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function () {
+        try {
+          var scale = Math.min(1, 1000 / img.naturalWidth);
+          var w = Math.max(1, Math.round(img.naturalWidth * scale));
+          var h = Math.max(1, Math.round(img.naturalHeight * scale));
+          var c = document.createElement("canvas");
+          c.width = w;
+          c.height = h;
+          var ctx = c.getContext("2d");
+          ctx.fillStyle = "#060a15";
+          ctx.fillRect(0, 0, w, h);
+          ctx.drawImage(img, 0, 0, w, h);
+          var out = "";
+          [0.82, 0.68, 0.55, 0.42].some(function (q) { out = c.toDataURL("image/jpeg", q); return out.length < 900000; });
+          URL.revokeObjectURL(url);
+          if (out.length >= 900000) reject(new Error("big")); else resolve(out);
+        } catch (e) { reject(e); }
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error("read")); };
+      img.src = url;
+    });
+  }
+
+  function fmtTime(iso) {
+    try { return new Date(iso).toLocaleString([], { dateStyle: "medium", timeStyle: "short" }); } catch (e) { return ""; }
+  }
+
+  function renderEnquiries(list) {
+    var box = $("elist");
+    box.textContent = "";
+    $("ehead").textContent = "Enquiries (" + list.length + ")";
+    if (!list.length) {
+      var p = document.createElement("p");
+      p.className = "gs";
+      p.textContent = "No enquiries yet.";
+      box.appendChild(p);
+      return;
+    }
+    list.forEach(function (e) {
+      var art = document.createElement("article");
+      art.className = "eq";
+      var top = document.createElement("div");
+      top.className = "eq-top";
+      var b = document.createElement("b");
+      b.textContent = String(e.name || "");
+      var n = document.createElement("span");
+      n.className = "eq-need";
+      n.textContent = String(e.need || "");
+      top.appendChild(b);
+      top.appendChild(n);
+      var c = String(e.contact || ""), href = "";
+      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c)) href = "mailto:" + c;
+      else if (/^\+?\d[\d\s()-]{6,}$/.test(c)) href = "tel:" + c.replace(/[^\d+]/g, "");
+      var cp = document.createElement(href ? "a" : "p");
+      cp.className = "eq-c";
+      cp.textContent = c;
+      if (href) cp.setAttribute("href", href);
+      var m = document.createElement("p");
+      m.className = "eq-m";
+      m.textContent = String(e.message || "");
+      var t = document.createElement("time");
+      t.textContent = fmtTime(e.at);
+      art.appendChild(top);
+      art.appendChild(cp);
+      art.appendChild(m);
+      art.appendChild(t);
+      box.appendChild(art);
+    });
+  }
+
+  async function loadEnquiries() {
+    var r = await api({ action: "list_enquiries", passcode: passcode });
+    if (r.status === 200 && r.data && Array.isArray(r.data.enquiries)) {
+      renderEnquiries(r.data.enquiries);
+    } else {
+      var box = $("elist");
+      box.textContent = "";
+      var p = document.createElement("p");
+      p.className = "gs err";
+      p.textContent = "Couldn't load enquiries.";
+      box.appendChild(p);
+    }
   }
 
   function openGate() {
@@ -461,8 +676,12 @@ input::placeholder { color: #566384; }
       '<div class="gv form" id="panelv" hidden><p class="eyebrow">Admin</p><p class="gs ok" id="who">Unlocked</p>' +
       '<label class="lbl" for="plink">Project link</label>' +
       '<input id="plink" type="text" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Paste the site link here">' +
+      '<label class="lbl" for="pimg">Picture (optional)</label>' +
+      '<input id="pimg" type="file" accept="image/*">' +
+      '<div class="pprev" id="pprev" hidden><img id="pprevimg" alt="Preview of the chosen picture"></div>' +
       '<p class="gs err" id="perr" role="alert"></p>' +
-      '<button class="btn" id="padd" type="button">Add project</button></div></div>';
+      '<button class="btn" id="padd" type="button">Add project</button>' +
+      '<h3 class="eh" id="ehead">Enquiries</h3><div id="elist" class="elist"><p class="gs">Loading…</p></div></div></div>';
     document.body.appendChild(g);
     gateEl = g;
     document.addEventListener("keydown", onGateKey);
@@ -481,6 +700,7 @@ input::placeholder { color: #566384; }
         $("lockv").hidden = true;
         $("panelv").hidden = false;
         $("plink").focus();
+        loadEnquiries();
       } else {
         pc.value = "";
         gs.textContent = errorText(r);
@@ -490,7 +710,25 @@ input::placeholder { color: #566384; }
     go.addEventListener("click", tryUnlock);
     pc.addEventListener("keydown", function (e) { if (e.key === "Enter") tryUnlock(); });
 
-    var padd = $("padd"), plink = $("plink"), perr = $("perr");
+    var padd = $("padd"), plink = $("plink"), perr = $("perr"), pimg = $("pimg");
+    var pprev = $("pprev"), pprevimg = $("pprevimg"), imageData = "";
+    pimg.addEventListener("change", async function () {
+      imageData = "";
+      pprev.hidden = true;
+      perr.textContent = "";
+      var f = pimg.files && pimg.files[0];
+      if (!f) return;
+      if (!/^image\//.test(f.type)) { perr.textContent = "Choose a picture file."; pimg.value = ""; return; }
+      try {
+        imageData = await fileToJpeg(f);
+        pprevimg.src = imageData;
+        pprev.hidden = false;
+      } catch (e) {
+        perr.textContent = "Couldn't use that picture. Try a PNG or JPG screenshot.";
+        pimg.value = "";
+      }
+    });
+
     async function addProject() {
       if (padd.disabled) return;
       var u = normalizeUrl(plink.value);
@@ -499,7 +737,9 @@ input::placeholder { color: #566384; }
       perr.textContent = "";
       padd.disabled = true;
       padd.textContent = "Adding…";
-      var r = await api({ action: "add", passcode: passcode, url: u.href });
+      var payload = { action: "add", passcode: passcode, url: u.href };
+      if (imageData) payload.image = imageData;
+      var r = await api(payload);
       if (r.status === 200 && r.data && r.data.ok) {
         projects = clean(r.data.projects);
         renderProjects();
@@ -525,11 +765,43 @@ input::placeholder { color: #566384; }
   }
 
   /* ---------- boot ---------- */
-  $("app").innerHTML = shell();
   $("yr").textContent = String(new Date().getFullYear());
   renderProjects();
   load();
   $("copy2").addEventListener("click", copyNumber);
+
+  /* enquiry form: saved on the server and read in the admin panel */
+  var enq = $("enq");
+  enq.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    var st = $("e-status"), btn = $("e-send");
+    var d = new FormData(enq);
+    if (d.get("bot-field")) return;
+    var name = String(d.get("name") || "").trim();
+    var contact = String(d.get("contact") || "").trim();
+    var message = String(d.get("message") || "").trim();
+    if (!name || !contact || !message) {
+      st.className = "gs err";
+      st.textContent = "Please add your name, how to reach you, and a short message.";
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = "Sending\u2026";
+    st.className = "gs";
+    st.textContent = "";
+    var r = await api({ action: "enquiry", "bot-field": "", name: name, contact: contact, need: String(d.get("need") || ""), message: message });
+    try {
+      if (r.status !== 200 || !r.data || !r.data.ok) throw new Error(r.status === 429 ? "limit" : "send failed");
+      enq.reset();
+      st.className = "gs ok";
+      st.textContent = "Thanks, your message has been sent.";
+    } catch (x) {
+      st.className = "gs err";
+      st.textContent = x.message === "limit" ? "Too many messages sent. Please try again later or use WhatsApp." : "Couldn't send. Please call or message me on WhatsApp instead.";
+    }
+    btn.disabled = false;
+    btn.textContent = "Send enquiry";
+  });
   document.addEventListener("click", function (e) {
     var a = e.target.closest ? e.target.closest("[data-go]") : null;
     if (!a) return;
@@ -551,4 +823,3 @@ input::placeholder { color: #566384; }
 </script>
 </body>
 </html>
-       
