@@ -19,6 +19,9 @@ input[type="file"] { padding: .6rem .7rem; font-size: .85rem; }
 .eh { margin: 1.2rem 0 0; padding-top: 1rem; border-top: 1px solid var(--edge); font: 700 1rem/1.2 var(--f-display); font-stretch: 112%; }
 .elist { display: grid; gap: .7rem; }
 .eq { padding: .85rem; background: var(--ink); border: 1px solid var(--edge); border-radius: 8px; overflow-wrap: anywhere; }
+.mrow { display: flex; align-items: center; justify-content: space-between; gap: .6rem; padding: .5rem .75rem; background: var(--ink); border: 1px solid var(--edge); border-radius: 8px; font-size: .9rem; overflow-wrap: anywhere; }
+.del { min-height: 2.5rem; padding: 0 .8rem; border: 1px solid var(--edge); border-radius: 8px; background: transparent; color: var(--bad); font: 500 .75rem var(--f-mono); cursor: pointer; }
+.eq .del { margin-top: .5rem; }
 .eq-top { display: flex; justify-content: space-between; gap: .6rem; }
 .eq-need { color: var(--sky); font: 500 .68rem var(--f-mono); }
 .eq-c { display: block; margin: .3rem 0; color: var(--sky); font: 500 .85rem var(--f-mono); }
@@ -644,7 +647,60 @@ textarea { min-height: 7rem; padding: .7rem .9rem; resize: vertical; }
       art.appendChild(cp);
       art.appendChild(m);
       art.appendChild(t);
+      var del = document.createElement("button");
+      del.type = "button";
+      del.className = "del";
+      del.textContent = "Delete";
+      del.addEventListener("click", async function () {
+        if (del.dataset.sure !== "1") { del.dataset.sure = "1"; del.textContent = "Tap again to delete"; return; }
+        del.disabled = true;
+        var r = await api({ action: "delete_enquiry", passcode: passcode, id: e.id });
+        if (r.status === 200 && r.data && Array.isArray(r.data.enquiries)) renderEnquiries(r.data.enquiries);
+        else { del.disabled = false; del.textContent = "Couldn't delete. Try again"; delete del.dataset.sure; }
+      });
+      art.appendChild(del);
       box.appendChild(art);
+    });
+  }
+
+  function renderManage() {
+    var box = $("mlist");
+    if (!box) return;
+    box.textContent = "";
+    if (!projects.length) {
+      var p0 = document.createElement("p");
+      p0.className = "gs";
+      p0.textContent = "No projects yet.";
+      box.appendChild(p0);
+      return;
+    }
+    projects.forEach(function (p) {
+      var row = document.createElement("div");
+      row.className = "mrow";
+      var nm = document.createElement("span");
+      nm.textContent = nameFromHost(hostOf(p.url)) + (p.image ? " \u00b7 picture" : "");
+      var del = document.createElement("button");
+      del.type = "button";
+      del.className = "del";
+      del.textContent = "Delete";
+      del.addEventListener("click", async function () {
+        if (del.dataset.sure !== "1") { del.dataset.sure = "1"; del.textContent = "Tap again"; return; }
+        del.disabled = true;
+        var r = await api({ action: "remove", passcode: passcode, url: p.url });
+        if (r.status === 200 && r.data && r.data.ok) {
+          projects = clean(r.data.projects);
+          renderProjects();
+          renderManage();
+          toast("Project deleted");
+        } else {
+          del.disabled = false;
+          del.textContent = "Couldn't delete";
+          delete del.dataset.sure;
+        }
+      });
+      row.appendChild(nm);
+      row.appendChild(del);
+      box.appendChild(row);
     });
   }
 
@@ -681,6 +737,7 @@ textarea { min-height: 7rem; padding: .7rem .9rem; resize: vertical; }
       '<div class="pprev" id="pprev" hidden><img id="pprevimg" alt="Preview of the chosen picture"></div>' +
       '<p class="gs err" id="perr" role="alert"></p>' +
       '<button class="btn" id="padd" type="button">Add project</button>' +
+      '<h3 class="eh">Your projects</h3><div id="mlist" class="elist"></div>' +
       '<h3 class="eh" id="ehead">Enquiries</h3><div id="elist" class="elist"><p class="gs">Loading…</p></div></div></div>';
     document.body.appendChild(g);
     gateEl = g;
@@ -700,6 +757,7 @@ textarea { min-height: 7rem; padding: .7rem .9rem; resize: vertical; }
         $("lockv").hidden = true;
         $("panelv").hidden = false;
         $("plink").focus();
+        renderManage();
         loadEnquiries();
       } else {
         pc.value = "";
