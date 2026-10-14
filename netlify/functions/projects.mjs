@@ -8,6 +8,7 @@ import { createHash, randomUUID, timingSafeEqual } from "node:crypto";
 //   POST /api/projects  action "verify"           check the admin passcode
 //   POST /api/projects  action "add"              add a project (passcode needed)
 //   POST /api/projects  action "list_enquiries"   read enquiries (passcode needed)
+//   POST /api/projects  action "remove" / "delete_enquiry"   delete (passcode needed)
 // The passcode lives in the Netlify environment variable ADMIN_PASSCODE and
 // is never sent to visitors.
 export const config = { path: "/api/projects" };
@@ -173,6 +174,28 @@ export default async (req, context) => {
     list = [entry, ...list];
     await projects.setJSON("list", list);
     return json({ ok: true, projects: list });
+  }
+
+  if (body.action === "remove") {
+    const u = normalizeUrl(body.url);
+    if (!u) return json({ error: "bad_url" }, 400);
+    let list = (await projects.get("list", { type: "json" })) || [];
+    const gone = list.find((p) => p.url === u.href);
+    if (!gone) return json({ error: "not_found" }, 404);
+    list = list.filter((p) => p.url !== u.href);
+    await projects.setJSON("list", list);
+    if (gone.image && IMAGE_ID.test(gone.image)) {
+      try { await images.delete(gone.image); } catch {}
+    }
+    return json({ ok: true, projects: list });
+  }
+
+  if (body.action === "delete_enquiry") {
+    const id = text(body.id, 60);
+    let list = (await enquiries.get("list", { type: "json" })) || [];
+    list = list.filter((e) => e.id !== id);
+    await enquiries.setJSON("list", list);
+    return json({ ok: true, enquiries: list });
   }
 
   return json({ error: "bad_request" }, 400);
